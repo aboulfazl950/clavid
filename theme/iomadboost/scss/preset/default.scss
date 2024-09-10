@@ -125,6 +125,35 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+    font-family: 'IRSansLight';
+    src: url([[font:theme|IRSansLight.eot]]) format('embedded-opentype'),
+    url([[font:theme|IRSansLight.woff]]) format('woff'),
+    url([[font:theme|IRSansLight.ttf]]) format('truetype');
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'IRANYekanWebBold';
+    src: url([[font:theme|iranyekanwebbold.eot]]) format('embedded-opentype'),
+    url([[font:theme|iranyekanwebbold.woff]]) format('woff'),
+    url([[font:theme|iranyekanwebbold.ttf]]) format('truetype');
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'IRANYekanWebLight';
+    src: url([[font:theme|iranyekanweblight.eot]]) format('embedded-opentype'),
+    url([[font:theme|iranyekanweblight.woff]]) format('woff'),
+    url([[font:theme|iranyekanweblight.ttf]]) format('truetype');
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'IRANYekanWebLightFaNum';
+    src: url([[font:theme|iranyekanweblightfanum.eot]]) format('embedded-opentype'),
+    url([[font:theme|iranyekanweblightfanum.woff]]) format('woff'),
+    url([[font:theme|iranyekanweblightfanum.ttf]]) format('truetype');
+    font-weight: normal;
+    font-style: normal; }
+
 .navbar {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
 }
