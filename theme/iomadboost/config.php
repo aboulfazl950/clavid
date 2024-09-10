@@ -87,8 +87,8 @@ $THEME->layouts = [
     ),
     // My dashboard page.
     'mydashboard' => array(
-        'file' => 'drawers.php',
-        'regions' => array('side-pre'),
+        'file' => 'drawers_extend.php',
+        'regions' => array('side-pre','b-right','b-left'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => true, 'langmenu' => true),
     ),
