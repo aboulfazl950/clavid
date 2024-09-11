@@ -1,0 +1,9 @@
+.dropdown-toggle {
+  &::after {
+    content: "\f107" !important;
+    font-family: "Font Awesome 6 Pro" !important;
+    margin-right: 0.4rem !important;
+    vertical-align: middle !important;
+    border: none !important;
+  }
+}

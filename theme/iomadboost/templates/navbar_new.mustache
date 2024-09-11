@@ -1,0 +1,731 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+
+    @template theme_iomadboost/navbar_new
+
+    This template renders the top navbar.
+
+    Example context (json):
+    {
+        "output": {
+            "should_display_navbar_logo": true,
+            "get_compact_logo_url": "http://placekitten.com/50/50",
+            "custom_menu": "<li>..</li>",
+            "page_heading_menu": "<li>..</li>",
+            "search_box": "<div><input type='text'></div>",
+            "navbar_plugin_output": "<div class='dropdown'>Messaging</div>",
+            "user_menu": "<div class='dropdown'>John Doe</div>"
+        },
+        "config": {
+            "wwwroot": "#",
+            "homeurl": "/my/"
+        },
+        "sitename": "Moodle Site",
+        "mobileprimarynav": [
+            {
+                "text": "Dashboard",
+                "url": "/my",
+                "isactive": true
+            },
+            {
+                "text": "Site home",
+                "url": "/",
+                "isactive": false
+            },
+            {
+                "text": "My courses",
+                "url": "/course",
+                "isactive": false
+            }
+        ]
+    }
+}}
+
+<!-- Header START -->
+<header>
+<nav class="navbar navbar-expand-xl py-0 container" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+
+<!-- Logo START -->
+        <div class="logo-block d-flex align-items-start position-absolute">
+            <a class="navbar-brand" href="{{{ config.homeurl }}}">
+                <img class="logo" src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+            </a>
+            <div class="logo-type">
+                <div>{{sitename}}</div>
+            </div>
+        </div>
+        <!-- Logo END -->
+
+
+
+
+        <!-- Nav Main menu START -->
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                     aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <!--                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">title</h5>-->
+                        <img class="offcanvas-logo" src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav navbar-nav-scroll ms-auto align-items-center">
+
+                           {{{ output.navbar_plugin_output }}}
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
+                            {{#usermenu}}
+                                {{> theme_iomadboost/user_menu }}
+                            {{/usermenu}}
+                </div>
+
+</nav>
+<!-- Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+    <!--  Hero Section START  -->
+    <section class="hero-section position-relative overflow-hidden">
+        <div class="bg">
+            <span class="bg-one"></span>
+            <span class="bg-two"></span>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-sm-12 col-lg-5 col-xl-6">
+                    <div class="flex-grow">
+                        <div class="position-relative hero-banner">
+                            <figure class="mb-0" data-aos="fade-in" data-aos-delay="400">
+                                <img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/elements/hero-banner.png" class="w-75" alt="hero">
+                            </figure>
+                            <div class="play-one"><img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/elements/play-one.png" class="w-75"
+                                                       alt="play"></div>
+                            <div class="play-two"><img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/elements/play-two.png" class="w-75"
+                                                       alt="play"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-lg-7 col-xl-6">
+                    <h1 class="hero-title mb-5" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="400">
+                        <span>شـروع دوره های</span>
+                        <br>
+                        <span>آمـوزشــی ضمـن خدمــت</span>
+                    </h1>
+                    <div class="search-wrapper" data-aos="fade-up" data-aos-delay="600" data-aos-once="true">
+                        <form action="#" class="frm-search d-flex align-items-center">
+                            <div class="flex-fill">
+                                <label>
+                                    <input class="search-input" type="text" name="q"
+                                           placeholder="نام دوره را جستجو کنید"
+                                           autocomplete="off">
+                                </label>
+                            </div>
+                            <div class="search-submit">
+                                <button class="btn-search">
+                                    <i class="fal fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="feature-wrapper swiper-container" data-aos="fade-up" data-aos-delay="800"
+                         data-aos-once="true">
+                        <div class="feature-slider-wrapper">
+                            <div dir="rtl" class="swiper feature-slider feature-slider-js">
+                                <div class="swiper-wrapper">
+                                    {{#companies}}
+                                    <div class="swiper-slide">
+                                        <div class="feature-card">
+                                            <a href="/my?c={{id}}#Courses">
+                                            <div class="d-flex flex-column text-center">
+                                                <div class="feature-card-icon">
+                                                    <img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/icons/{{#image}}{{image}}{{/image}}{{^image}}notset{{/image}}.png" alt=""
+                                                         loading="lazy">
+                                                </div>
+                                                <div class="feature-card-title">
+                                                    {{name}}
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {{/companies}}
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="feature-navigation flex-fill">
+                                <div class="d-flex align-items-center feature-navigation">
+                                    <div class="btn rounded-circle btn-nav swiper-button-next"></div>
+                                    <div class="btn rounded-circle btn-nav swiper-button-prev"></div>
+                                </div>
+                            </div>
+                            <div class="feature-see-more">
+                                <a href="{{config.wwwroot}}/course" class="theme-btn rounded-pill">مشاهـده همه</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  Hero Section End  -->
+
+    {{#authenticateduser}}
+
+    <!-- Course Style 1 START -->
+    <section class="courses-section style-1">
+        <div class="bg">
+            <span class="bg-one"></span>
+            <span class="bg-two"></span>
+        </div>
+        <div class="container">
+            <div class="courses-wrapper">
+                <div class="d-flex align-items-center mb-5">
+                    <div class="title me-auto">
+                        <h2 class="title">دوره های آموزشی ضمن خدمت</h2>
+                    </div>
+                    <div class="navigation">
+                        <div class="d-flex align-items-center">
+                            <div class="btn rounded-circle btn-nav swiper-btn-next">
+                                <i class="fa-light fa-chevron-left"></i>
+                            </div>
+                            <div class="btn rounded-circle btn-nav swiper-btn-prev">
+                                <i class="fa-light fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div dir="rtl" class="swiper courses-slider courses-slider-js">
+                    <div class="swiper-wrapper">
+
+                        {{#in_service_courses}}
+                        <div class="swiper-slide">
+                            <article class="course-box shadow border-0 h-100">
+                                <!-- Cover -->
+                                <figure class="course-cover">
+                                    <a href="{{config.wwwroot}}/blocks/in_service/reg.php?id={{id}}" class="course-link"></a>
+                                    <img src="{{image}}" style="min-height:270px;max-height:270px;"
+                                         class="card-img-top" alt="course image">
+                                    <!-- Badge -->
+                                    <div class="course-tag">
+                                        <a href="#" class="rounded-pill tag-value">درحال برگزاری</a>
+                                    </div>
+                                </figure>
+                                <div class="course-info d-flex flex-column justify-content-center">
+                                    <!-- Title -->
+                                    <h5 class="course-title">
+                                        <a href="#">{{name}}</a>
+                                    </h5>
+                                    <hr>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="course-category h6 fw-light mb-0">
+                                            <div class="course-category-icon me-2 rounded-circle bg-white">
+                                                <i class="fal fa-users-class"></i>
+                                            </div>
+                                            <span class="course-category-title small fw-light text-white">{{company}}</span>
+                                        </div>
+                                        <div class="mb-0 small fw-light">
+                                            <span class="text-white">جامع</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        {{/in_service_courses}}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Course START -->
+
+
+
+    <!-- Course START -->
+    <section class="courses-section sec-bg" id="Courses">
+        <div class="container">
+            <div class="courses-wrapper">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="title me-auto">
+                        <h2 class="title">جدیدترین دوره ها</h2>
+                    </div>
+                    <div class="navigation">
+                        <div class="d-flex align-items-center">
+                            <div class="btn rounded-circle btn-nav swiper-btn-next">
+                                <i class="fa-light fa-chevron-left"></i>
+                            </div>
+                            <div class="btn rounded-circle btn-nav swiper-btn-prev">
+                                <i class="fa-light fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div dir="rtl" class="swiper courses-slider courses-slider-js">
+                    <div class="swiper-wrapper">
+
+                        {{#online}}
+
+                        <div class="swiper-slide">
+                            <article class="course-item card shadow border-0 h-100">
+                                <!-- Course Cover -->
+                                <figure class="course-cover">
+                                    <a href="#"></a>
+                                    <img src="{{image}}"  style="min-height:270px;max-height:270px;" class="card-img-top" alt="course image">
+                                    <!-- Badge -->
+                                    <div class="course-tag">
+                                        <a href="#" class="rounded-pill tag-value">درحال برگزاری</a>
+                                    </div>
+                                </figure>
+                                <!-- Course body -->
+                                <div class="course-content card-body pb-0">
+                                    <!-- Title -->
+                                    <h5 class="card-title fw-normal">
+                                        <a href="{{config.wwwroot}}/blocks/company_courses/check.php?id={{id}}">{{name}}</a>
+                                    </h5>
+                                    <p class="small mb-2 text-muted text-truncate-2">{{company}}</p>
+                                    <p class="my-3 text-truncate-2 small fw-light">
+                                        {{description}}
+                                    </p>
+
+                                </div>
+                                <!-- Course footer -->
+                                <div class="course-footer card-footer bg-white border-top-0 pt-0 pb-3">
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="h6 fw-light mb-0">
+                                            <i class="fal fa-users-class me-2"></i>
+                                            <span>{{register}}</span>
+                                        </span>
+                                        <span class="h6 fw-light mb-0">
+                                            <i class="fal fa-clock text-orange me-2"></i>
+                                            <span>01:32:50</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        {{/online}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Course START -->
+
+    {{/authenticateduser}}
+
+    <!-- Course Style 1 START -->
+    <section class="courses-section style-1">
+        <div class="bg">
+            <span class="bg-one"></span>
+        </div>
+        <div class="container">
+            <div class="courses-wrapper">
+                <div class="d-flex align-items-center mb-5">
+                    <div class="title me-auto">
+                        <h2 class="title">دوره های آموزشی برتر</h2>
+                    </div>
+                    <div class="navigation">
+                        <div class="d-flex align-items-center">
+                            <div class="btn rounded-circle btn-nav swiper-btn-next">
+                                <i class="fa-light fa-chevron-left"></i>
+                            </div>
+                            <div class="btn rounded-circle btn-nav swiper-btn-prev">
+                                <i class="fa-light fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div dir="rtl" class="swiper courses-slider courses-slider-js">
+                    <div class="swiper-wrapper">
+
+                    {{#best}}
+
+                        <div class="swiper-slide">
+                            <article class="course-box shadow border-0 h-100">
+                                <!-- Cover -->
+                                <figure class="course-cover">
+                                    <a href="#" class="course-link"></a>
+                                    <!-- <img src="{{config.wwwroot}}/{{image}}" -->
+                                    <img src="{{image}}"
+                                         class="card-img-top" alt="course image">
+                                    <!-- Badge -->
+                                    <div class="course-tag">
+                                        <a href="#" class="rounded-pill tag-value">درحال برگزاری</a>
+                                    </div>
+                                </figure>
+                                <div class="course-info d-flex flex-column justify-content-center">
+                                    <!-- Title -->
+                                    <h5 class="course-title">
+                                        <a href="#">{{name}}</a>
+                                    </h5>
+                                    <hr>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="course-category h6 fw-light mb-0">
+                                            <div class="course-category-icon me-2 rounded-circle bg-white">
+                                                <i class="fal fa-users-class"></i>
+                                            </div>
+                                            <span class="course-category-title small fw-light text-white">{{company}}</span>
+                                        </div>
+                                        <div class="mb-0 small fw-light">
+                                            <span class="text-white">جامع</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        {{/best}}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Course START -->
+
+    <!-- Counter START -->
+        <section class="counter-section sec-bg">
+            <div class="container">
+                <div class="counter-wrapper counter-bg rounded-3 px-3 py-5">
+                    <div class="row">
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="counter-card-item vr-divider">
+                                <div class="d-flex justify-content-center align-items-center flex-column">
+                                    <img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/icons/active-users.png" alt="users">
+                                    <div class="title my-3">کاربـری فعال</div>
+                                    <div class="counter">{{overview.users}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="counter-card-item vr-divider">
+                                <div class="d-flex justify-content-center align-items-center flex-column">
+                                    <img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/icons/training.png" alt="training">
+                                    <div class="title my-3">آموزش ها</div>
+                                    <div class="counter">{{overview.courses}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="counter-card-item vr-divider">
+                                <div class="d-flex justify-content-center align-items-center flex-column">
+                                    <img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/icons/videos.png" alt="videos">
+                                    <div class="title my-3">ویدئو هـا</div>
+                                    <div class="counter">{{overview.videos}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="counter-card-item">
+                                <div class="d-flex justify-content-center align-items-center flex-column">
+                                    <img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/icons/assistants.png" alt="assistants">
+                                    <div class="title my-3">مراکـز و معاونت ها</div>
+                                    <div class="counter">{{overview.companies}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Counter End -->
+
+    <!-- Application START -->
+    <section class="app-section sec-bg">
+        <div class="container">
+            <div class="app-wrapper">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="about-content" data-aos="fade-left" data-aos-offset="250" data-aos-once="true">
+                            <h2 class="mb-3 title">{{sitefullname}}</h2>
+                            <p class="pe-5 text-muted">
+                                {{sitedescription}}
+                            </p>
+                            <div class="about-link mt-4">
+                                <a href="?link=about" class="theme-btn rounded-pill">ادامه مطلب</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-once="true">
+                            <figure>
+                                <img src="{{config.wwwroot}}/theme/iomadboost/scss/sima/images/elements/app-mobile.png" alt="about"
+                                     class="img-fluid mobile-app">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Application End -->
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- Footer START -->
+<footer>
+    <div class="container">
+        <!-- Row START -->
+        <div class="row g-4">
+
+            <!-- Widget 1 START -->
+            <div class="col-lg-3">
+                <!-- logo -->
+                <div class="d-flex align-items-center">
+
+                    <a class="me-0" href="/">
+                        <img class="h-40px" src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+                    </a>
+                    <div class="ms-3">
+                        <div>سامانه یکپــارچه</div>
+                        <div>مدیریت آموزش</div>
+                    </div>
+                </div>
+                <p class="my-3 small text-muted pe-4">
+                    سامانه یکپارچه مدیریت آموزش الکترونیکی سیما، با هدف .
+                </p>
+
+            </div>
+            <!-- Widget 1 END -->
+
+            <!-- Widget 2 START -->
+            <div class="col-lg-6">
+                <div class="row g-4">
+
+
+
+
+                    <!-- Link block -->
+                    <div class="col-6 col-md-12">
+                    <h5 class="mb-2 mb-md-4">ارتباط با پشتیبان ها</h5>
+                    <div class="row g-2">
+
+                        <div class="col-6 col-md-6">
+                            <ul class="nav flex-column" style="font-size:12px !important;">
+                                <li class="nav-item"><a class="nav-link text-muted" href="#">معاونت آموزش (آقای مداحی 4208)</a></li>
+                                <li class="nav-item"><a class="nav-link text-muted" href="#">معاونت فرهنگی (آقای اله وردی 4447)</a></li>
+                                <li class="nav-item"><a class="nav-link text-muted" href="#">فعالیت های پژوهشی (آقای نصاری 4366)</a></li>
+
+                                <li class="nav-item"><a class="nav-link text-muted" href="#">معاونت پژوهش (خانم احمدی 4350)</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-md-6">
+                            <ul class="nav flex-column" style="font-size:12px !important;">
+                                 <li class="nav-item"><a class="nav-link text-muted" href="#">اداره آموزش و ارزشیابی (آقای رمضانی 4028)</a></li>
+                                 <li class="nav-item"><a class="nav-link text-muted" href="#">مرکز غیرحضوری (خانم پورخلیلی 02531285252)</a></li>
+                                 <li class="nav-item"><a class="nav-link text-muted" href="#">آموزش و فرهنگ سازی فضای مجازی (آقای جلیلی 4807)</a></li>
+                                 <li class="nav-item"><a class="nav-link text-muted" href="#">معاونت ارتباطات (آقای آراسته 4007)</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- Widget 2 END -->
+
+            <!-- Widget 3 START -->
+            <div class="col-lg-3">
+                <h5 class="mb-2 mb-md-4">ارتباط با ما</h5>
+
+                {{#contactus.supportcontact}}
+                <!-- Time -->
+                <p class="mb-3">
+                    <i class="fal fa-phone-alt pe-2"></i>تماس: <span class="h6 fw-light ms-2">{{contactus.supportcontact}}</span><span
+                        class="small"> {{contactus.supportcontacttime}} </span>
+                </p>
+                {{/contactus.supportcontact}}
+
+                {{#contactus.supportemail}}
+                <p class="mb-3"><i class="fal fa-message-dots pe-2"></i>ایمیل:<span
+                        class="h6 fw-light ms-2">{{{contactus.supportemail}}}</span></p>
+                {{/contactus.supportemail}}
+
+                {{#contactus.supportaddress}}
+                <p class="mb-0"><i class="fal fa-location pe-2"></i>آدرس:<span class="h6 fw-light ms-2">{{contactus.supportaddress}}</span>
+                </p>
+                {{/contactus.supportaddress}}
+
+
+
+            </div>
+            <!-- Widget 3 END -->
+        </div>
+        <!-- Row END -->
+
+        <!-- Divider -->
+        <hr class="mt-5 mb-0">
+
+        <!-- Bottom footer -->
+        <div class="py-3">
+            <div class="container px-0">
+                <div class="d-lg-flex justify-content-between align-items-center py-1 text-center text-md-left">
+                    <!-- copyright text -->
+                    <div class="small text-primary-hover"> © 2023 کلیه حقوق مادی و معنوی این وب‌سایت متعلق به وبسایت
+                        {{{sitename}}} می باشد.
+                    </div>
+                    <!-- copyright links-->
+                    <div class="copyright-links justify-content-center mt-3 mt-lg-0">
+                        <ul class="nav list-inline justify-content-center mb-0">
+                            <li class="list-inline-item"><a class="nav-link text-muted" href="#">مقررات</a></li>
+                            <li class="list-inline-item"><a class="nav-link text-muted pe-0" href="#">حریم خصوصی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer END -->
+
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        /*if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {*/
+        if (arr[i].name.toUpperCase().indexOf(val.toUpperCase())!= -1) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = arr[i].name.substr(0,arr[i].name.indexOf(val));
+          b.innerHTML += "<strong>" + arr[i].name.substr(arr[i].name.indexOf(val), val.length) + "</strong>";
+          b.innerHTML += arr[i].name.substr(arr[i].name.indexOf(val)+val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' data-id='" + arr[i].id + "' value='" + arr[i].name + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              inp.id = this.getElementsByTagName("input")[0].dataset.id;
+              //alert(inp.id);
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+              window.location.href = "{{config.wwwroot}}/blocks/company_courses/check.php?id="+inp.id;
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+
+var countries = [];
+{{#courses}}
+countries.push({"id":{{id}}, "name":"{{name}}"});
+{{/courses}}
+
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementsByClassName("search-input")[0], countries);
+</script>
+
+{{> theme_iomadboost/primary-drawer-mobile }}

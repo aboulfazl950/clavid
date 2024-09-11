@@ -1,0 +1,16 @@
+.theme-btn {
+  position: relative;
+  display: inline-flex;
+  transition: all .5s ease;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 0 35px;
+  line-height: 40px;
+  background-color: var(--color-primary);
+  color: #fafafa !important;
+  font-size: 15px;
+  font-weight: normal;
+  white-space: nowrap;
+}

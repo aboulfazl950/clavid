@@ -1,0 +1,22 @@
+/** Counter Section **/
+.counter-section {
+  position: relative;
+  //background: linear-gradient(0deg, transparent 40%, #fafafa 60%);
+  //background: linear-gradient(to top, transparent 0%, transparent 50%, #fafafa 50%, #fafafa 100%);
+  z-index: 2;
+
+  .counter-bg {
+    background-color: #dde6d3;
+  }
+
+  .counter-card-item {
+    .title {
+      color: #7e7e7e;
+    }
+
+    .counter {
+      font-size: 1.9rem;
+      font-weight: bold;
+    }
+  }
+}

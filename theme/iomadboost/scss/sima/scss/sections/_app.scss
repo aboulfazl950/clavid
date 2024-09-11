@@ -1,0 +1,68 @@
+/** About Section **/
+
+.app-section {
+  position: relative;
+  margin-top: -140px;
+  padding: 90px 0;
+  overflow: hidden;
+  padding: 190px 0 120px 0;
+
+  &.sec-bg {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(238, 238, 238, 0.4) 20%,
+            rgba(255, 255, 255, 0.7) 60%,
+            rgba(237, 237, 237, 0.7) 75%,
+            rgba(255, 255, 255, 0.2) 100%),
+    url([[pix:theme|sima/bg-1]]);
+  }
+
+  .app-wrapper {
+    position: relative;
+
+    .title {
+      color: #4e4e4e;
+    }
+
+    figure {
+      position: relative;
+      z-index: 1;
+
+      &:before {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        content: "";
+        right: 45%;
+        top: 70%;
+        transform: translate(-50%, -50%);
+        background-color: #ff8080;
+        filter: blur(75px) contrast(3) hue-rotate(15deg) drop-shadow(0 0 #ff8080);
+        mix-blend-mode: multiply;
+        -webkit-border-radius: 50em;
+        -moz-border-radius: 50em;
+        border-radius: 50em;
+        z-index: -1;
+      }
+
+      .mobile-app {
+        animation: slide-top 3.2s ease infinite alternate;
+        animation-delay: 1s;
+      }
+
+      @keyframes slide-top {
+        0% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-30px);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}

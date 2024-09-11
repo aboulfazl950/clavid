@@ -1,0 +1,55 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Page header.
+}}
+{{{ output.doctype }}}
+<html {{{ output.htmlattributes }}}>
+<head>
+    <title>{{{ output.page_title }}}</title>
+    <link rel="shortcut icon" href="{{{ output.favicon }}}" />
+    {{{ output.standard_head_html }}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {{#mypage}}
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" href="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/bootstrap/css/bootstrap.rtl.min.css">
+        <link rel="stylesheet" href="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/swiper/swiper-bundle.min.css">
+        <link rel="stylesheet" href="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/font-awesome/css/all.min.css" type="text/css">
+        <link rel="stylesheet" href="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/aos/aos.css">
+        <link rel="stylesheet" href="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/animate/animate.min.css">
+
+
+        <link rel="stylesheet" href="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/iranyekan/iranyekan.css">
+
+        <!-- Theme CSS -->
+        <link rel="stylesheet" type="text/css" href="{{config.wwwroot}}/theme/iomadboost/scss/sima/style.css">
+
+        <!-- JS Vendors -->
+        <script src="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/jquery/jquery-3.6.4.min.js"></script>
+        <script src="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/aos/aos.js"></script>
+        <script src="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/waypoints/jquery.waypoints.min.js"></script>
+        <script src="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/counter-up/jquery.counterup.min.js"></script>
+        <!-- Theme Js -->
+        <script src="{{config.wwwroot}}/theme/iomadboost/scss/sima/js/theme.js"></script>
+        {{/mypage}}
+        {{^mypage}}
+        <link rel="stylesheet" href="{{config.wwwroot}}/theme/iomadboost/scss/sima/vendor/font-awesome/css/all.min.css" type="text/css">
+        {{/mypage}}
+</head>

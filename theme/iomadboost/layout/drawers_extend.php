@@ -84,6 +84,30 @@ $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settin
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
+global $DB;
+
+$overview = [
+    'users' => $DB->get_record_sql("select count(id) AS cnt from {user} where username not like '%_c%'")->cnt,
+    'courses' => $DB->get_record_sql("select count(id) AS cnt from {course}")->cnt,
+    'videos' => $DB->get_record_sql("select count(id) AS cnt from {user}")->cnt,
+    'companies' => $DB->get_record_sql("select count(id) AS cnt from {company} where suspended=0")->cnt,
+];
+
+$mypage = false;
+if($OUTPUT->page->pagelayout == 'mydashboard' || $OUTPUT->page->pagelayout =='frontpage') {
+    $mypage = true;
+}
+
+$companies = $DB->get_records_sql("select id,name,code from {company} where suspended=0");
+$all_company = [];
+foreach($companies as $company) {
+    $all_company[] = [
+        'id'=> $company->id,
+        'name' => $company->name,
+        'image' => $company->code,
+    ];
+}
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -105,7 +129,11 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'overflow' => $overflow,
     'headercontent' => $headercontent,
-    'addblockbutton' => $addblockbutton
+    'addblockbutton' => $addblockbutton,
+    'mypage' => ($OUTPUT->page->pagelayout=='mydashboard' || $OUTPUT->page->pagelayout =='frontpage'),
+    'contactus' => $CFG->contactus,
+    'overview' => $overview,
+    'companies' => $all_company,
 ];
 
 echo $OUTPUT->render_from_template('theme_iomadboost/drawers_extend', $templatecontext);

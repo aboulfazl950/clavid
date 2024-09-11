@@ -1,0 +1,27 @@
+/*
+* Variables
+*/
+$assets-path: "/assets/";
+// Font information
+$default-font-family: iranyekan;
+$font-yekan: iranyekan;
+$font-iransans: IRANSans;
+$font-title: IRANSans;
+$font-content: iranyekan;
+$font-weight-ultralight: 200;
+$font-weight-light: 300;
+$font-weight-regular: 500;
+$font-weight-bold: 600;
+$default-border-radius: 4px;
+
+// Z-index variable
+$starting-zindex: 1000;
+$zindex-modal-backdrop: $starting-zindex * 3;
+$zindex-modal: $zindex-modal-backdrop + 1;
+
+// Responsive
+$small-screen-min-width: 320px;
+$small-screen-max-width: 568px;
+$medium-screen-min-width: 768px;
+$medium-screen-max-width: 1024px;
+$large-screen-min-width: 1824px;

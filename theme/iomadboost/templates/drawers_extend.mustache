@@ -49,7 +49,7 @@
         "addblockbutton": ""
     }
 }}
-{{> theme_iomadboost/head }}
+{{> theme_iomadboost/head-new }}
 
 <body {{{ bodyattributes }}}>
 {{> core/local/toast/wrapper}}
@@ -57,7 +57,7 @@
 
     {{{ output.standard_top_of_body_html }}}
 
-    {{> theme_iomadboost/navbar }}
+    {{> theme_iomadboost/navbar_new }}
     {{#courseindex}}
         {{< theme_iomadboost/drawer }}
             {{$id}}theme_iomadboost-drawers-courseindex{{/id}}
@@ -93,7 +93,7 @@
         {{/ theme_iomadboost/drawer}}
     {{/hasblocks}}
     <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
-        <div id="topofscroll" class="main-inner">
+        <div id="topofscroll">
             <div class="drawer-toggles d-flex">
                 {{#courseindex}}
                     <div class="drawer-toggler drawer-left-toggle open-nav d-print-none">
@@ -129,7 +129,7 @@
                     </div>
                 {{/hasblocks}}
             </div>
-            {{{ output.full_header }}}
+
             {{#secondarymoremenu}}
                 <div class="secondary-navigation d-print-none">
                     {{> core/moremenu}}
